@@ -85,3 +85,18 @@ services:
       - 6881:6881
       - 6881:6881/udp
     restart: unless-stopped
+    
+  duplicati:
+    image: lscr.io/linuxserver/duplicati:latest
+    container_name: duplicati
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Amsterdam
+      - CLI_ARGS= #optional
+    volumes:
+      - /home/remco/duplicati/config>:/config
+      - /home:/source
+    ports:
+      - 8200:8200
+    restart: unless-stopped
