@@ -100,3 +100,15 @@ services:
     ports:
       - 8200:8200
     restart: unless-stopped
+   
+  adguardhome:
+    container_name: adguardhome
+    restart: unless-stopped
+    volumes:
+        - /home/remco/adguard/adguard_data:/opt/adguardhome/work
+        - /home/remco/adguard/adguard_config:/opt/adguardhome/conf
+    ports:
+        - '53:53/tcp'
+        - '53:53/udp'
+        - '3000:3000/tcp'
+    image: adguard/adguardhome
