@@ -1,5 +1,6 @@
 version: '3.3'
 
+
 services:
   homeassistant:
     container_name: homeassistant
@@ -18,9 +19,12 @@ services:
     container_name: mariadb
     restart: always
     environment:
-      MARIADB_ROOT_PASSWORD: *****
+      MARIADB_ROOT_PASSWORD: ********
     volumes:
       - /home/remco/mariadb:/var/lib/mysql
+    networks:
+      mynet:
+        ipv4_address: 172.19.0.3
 
   adminer:
     container_name: adminer
@@ -28,6 +32,9 @@ services:
     restart: unless-stopped
     ports:
       - 8080:8080
+    networks:
+      mynet:
+        ipv4_address: 172.19.0.4
 
   nginx:
     image: docker.io/jc21/nginx-proxy-manager:latest
@@ -35,18 +42,22 @@ services:
     restart: unless-stopped
     ports:
       # These ports are in format <host-port>:<container-port>
-      - '80:80' # Public HTTP Port
-      - '443:443' # Public HTTPS Port
+      - '1880:80' # Public HTTP Port
+      - '18443:443' # Public HTTPS Port
       - '81:81' # Admin Web Port
     environment:
-      DB_MYSQL_HOST: "mariadb"
+      DB_MYSQL_HOST: *********
       DB_MYSQL_PORT: 3306
-      DB_MYSQL_USER: *****
-      DB_MYSQL_PASSWORD: ******
-      DB_MYSQL_NAME: ******
+      DB_MYSQL_USER: *********
+      DB_MYSQL_PASSWORD: ********
+      DB_MYSQL_NAME: ********
     volumes:
       - /home/remco/nginx:/data
       - /home/remco/nginx/letsencrypt:/etc/letsencrypt
+    networks:
+      mynet:
+        ipv4_address: 172.19.0.5
+
   vaultwarden:
     restart: always
     container_name: vaultwarden
@@ -55,6 +66,7 @@ services:
       - /home/remco/vaultwarden:/data/
     ports:
       - 8062:80
+
   duckdns:
     image: lscr.io/linuxserver/duckdns:latest
     container_name: duckdns
@@ -62,8 +74,8 @@ services:
       - PUID=1000 #optional
       - PGID=1000 #optional
       - TZ=Europe/Amsterdam
-      - SUBDOMAINS=************
-      - TOKEN=*******************
+      - SUBDOMAINS=********
+      - TOKEN=********
       - LOG_FILE=false #optional
     volumes:
       - /home/remco/duckdns/config:/config #optional
@@ -85,6 +97,9 @@ services:
       - 6881:6881
       - 6881:6881/udp
     restart: unless-stopped
+    networks:
+      mynet:
+        ipv4_address: 172.19.0.2
 
   duplicati:
     image: lscr.io/linuxserver/duplicati:latest
@@ -93,7 +108,6 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Amsterdam
-      - CLI_ARGS= #optional
     volumes:
       - /home/remco/duplicati/config>:/config
       - /home:/source
@@ -101,21 +115,26 @@ services:
       - 8200:8200
     restart: unless-stopped
 
-  # adguardhome:
-  #     container_name: adguardhome
-  #     restart: unless-stopped
-  #     volumes:
-  #         - /home/remco/adguard/adguard_data:/opt/adguardhome/work
-  #         - /home/remco/adguard/adguard_config:/opt/adguardhome/conf
-  #     ports:
-  #         - '53:53/tcp'
-  #         - '53:53/udp'
-  #         - '3000:3000/tcp'
-  #     image: adguard/adguardhome
+  pihole:
+    container_name: pihole
+    image: pihole/pihole:latest
+    # For DHCP it is recommended to remove these ports and instead add: network_mode: "host"
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "80:80/tcp"
+    environment:
+      TZ: 'Europe/Amsterdam'
+      WEBPASSWORD: ********
+    # Volumes store your data between container upgrades
+    volumes:
+      - /home/remco/pihole/etc-pihole:/etc/pihole
+      - /home/remco/pihole/etc-dnsmasq.d:/etc/dnsmasq.d'    
+    restart: unless-stopped
 
   esphome:
     image: esphome/esphome:dev
-    container_name: esphome dev
+    container_name: esphome-dev
     volumes:
       - /home/remco/esphome:/config:rw
       - /etc/localtime:/etc/localtime:ro
