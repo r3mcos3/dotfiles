@@ -40,6 +40,7 @@ alias lart='ls -1Fcart'
 alias lrt='ls -1Fcrt'
 
 alias zshrc='${=EDITOR} ~/.zshrc' # Quick access to the ~/.zshrc file
+alias aliasrc='${=EDITOR} ~/.zsh/aliasrc'
 
 alias grep='grep --color'
 alias sgrep='grep -R -n -H -C 5 --exclude-dir={.git,.svn,CVS} '
@@ -101,3 +102,7 @@ alias remove='sudo apt purge $1 && sudo apt autoremove'
 alias update='sudo apt update'
 alias upgrade='sudo apt upgrade -y'
 alias uplist='apt list --upgradable'
+alias server='ssh remco@10.10.50.200'
+alias sync='rsync -avz --exclude-from=exclude.txt remco@10.10.50.200:/home/remco/docker/homeassistant /home/remco/harddisk/github --delete'
+alias backup='rsync -avz remco@10.10.50.200:/home/remco/docker/homeassistant/backups/ /home/remco/harddisk/ha_backups --delete'
+alias hamnt='sudo mount -t cifs -o username=remco,password=2012,gid=1000,uid=1000 //10.10.50.200/home/docker/homeassistant /home/remco/harddisk/ha_mount'
