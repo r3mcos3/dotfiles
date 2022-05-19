@@ -62,7 +62,7 @@ services:
       - PUID=1000 #optional
       - PGID=1000 #optional
       - TZ=Europe/Amsterdam
-      - SUBDOMAINS=r3mcos3
+      - SUBDOMAINS=************
       - TOKEN=*******************
       - LOG_FILE=false #optional
     volumes:
