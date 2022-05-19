@@ -1,4 +1,4 @@
-version: '3.1'
+version: '3.3'
 
 services:
   homeassistant:
@@ -12,13 +12,13 @@ services:
     network_mode: host
     depends_on:
       - mariadb
-    
+
   mariadb:
     image: docker.io/mariadb
     container_name: mariadb
     restart: always
     environment:
-      MARIADB_ROOT_PASSWORD: *******
+      MARIADB_ROOT_PASSWORD: Elyza2017
     volumes:
       - /home/remco/mariadb:/var/lib/mysql
 
@@ -39,11 +39,11 @@ services:
       - '443:443' # Public HTTPS Port
       - '81:81' # Admin Web Port
     environment:
-      DB_MYSQL_HOST: *****
+      DB_MYSQL_HOST: "mariadb"
       DB_MYSQL_PORT: 3306
-      DB_MYSQL_USER: *****
-      DB_MYSQL_PASSWORD: ******
-      DB_MYSQL_NAME: ******
+      DB_MYSQL_USER: "nginx"
+      DB_MYSQL_PASSWORD: "Elyza2017"
+      DB_MYSQL_NAME: "nginx"
     volumes:
       - /home/remco/nginx:/data
       - /home/remco/nginx/letsencrypt:/etc/letsencrypt
@@ -62,8 +62,8 @@ services:
       - PUID=1000 #optional
       - PGID=1000 #optional
       - TZ=Europe/Amsterdam
-      - SUBDOMAINS=*******
-      - TOKEN=*********
+      - SUBDOMAINS=r3mcos3
+      - TOKEN=753972e3-ca94-4355-95b1-f101cd4dff1b
       - LOG_FILE=false #optional
     volumes:
       - /home/remco/duckdns/config:/config #optional
@@ -85,7 +85,7 @@ services:
       - 6881:6881
       - 6881:6881/udp
     restart: unless-stopped
-    
+
   duplicati:
     image: lscr.io/linuxserver/duplicati:latest
     container_name: duplicati
@@ -100,15 +100,24 @@ services:
     ports:
       - 8200:8200
     restart: unless-stopped
-   
-  adguardhome:
-    container_name: adguardhome
-    restart: unless-stopped
+
+  # adguardhome:
+  #     container_name: adguardhome
+  #     restart: unless-stopped
+  #     volumes:
+  #         - /home/remco/adguard/adguard_data:/opt/adguardhome/work
+  #         - /home/remco/adguard/adguard_config:/opt/adguardhome/conf
+  #     ports:
+  #         - '53:53/tcp'
+  #         - '53:53/udp'
+  #         - '3000:3000/tcp'
+  #     image: adguard/adguardhome
+
+  esphome:
+    image: esphome/esphome:dev
+    container_name: esphome dev
     volumes:
-        - /home/remco/adguard/adguard_data:/opt/adguardhome/work
-        - /home/remco/adguard/adguard_config:/opt/adguardhome/conf
-    ports:
-        - '53:53/tcp'
-        - '53:53/udp'
-        - '3000:3000/tcp'
-    image: adguard/adguardhome
+      - /home/remco/esphome:/config:rw
+      - /etc/localtime:/etc/localtime:ro
+    network_mode: host
+    restart: always
