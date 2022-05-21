@@ -140,3 +140,24 @@ services:
       - /etc/localtime:/etc/localtime:ro
     network_mode: host
     restart: always
+
+  mosquitto:
+    container_name: mqtt
+    image: eclipse-mosquitto
+    volumes:
+      - /home/remco/mqtt:/mosquitto/:rw
+    ports:
+      - 1883:1883
+      - 9001:9001
+
+
+
+
+
+
+
+networks:
+  mynet:
+    ipam:
+      config:
+        - subnet: 172.19.0.0/16
