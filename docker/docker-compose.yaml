@@ -149,7 +149,18 @@ services:
     ports:
       - 1883:1883
       - 9001:9001
+    restart: always
 
+  minidlna:
+    image: croc/minidlna
+    environment:
+      - SRVNAME=docker-minidlna
+      - PORT=8205
+      - FOLDERS=/media/movies
+    volumes:
+      - '/home/remco/disk1/Downloads:/media/movies'
+    network_mode: 'host'
+    restart: always
 
 
 
