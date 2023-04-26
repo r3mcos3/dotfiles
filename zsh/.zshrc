@@ -21,6 +21,10 @@ alias cc="config commit -m"
 alias cp="config push"
 alias cs="config status"
 alias clean="sudo pacman -Rns $(pacman -Qtdq)"
+alias ga="git add $1"
+alias gc="oc"
+alias gs="git status"
+alias gp="git push"
 
 export EDITOR=lvim
 export GPG_TTY=$(tty)
