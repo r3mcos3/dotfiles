@@ -6,7 +6,7 @@ plug "zap-zsh/supercharge"
 plug "zsh-users/zsh-syntax-highlighting"
 plug "zap-zsh/exa"
 plug "wintermi/zsh-starship"
-plug "zap-zsh/fzf"
+# plug "zap-zsh/fzf"
 plug "chivalryq/zsh-autojump"
 
 alias lg="lazygit"
