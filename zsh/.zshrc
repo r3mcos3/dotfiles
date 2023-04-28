@@ -28,7 +28,7 @@ export PAGER=most
 export TERMINAL=kitty
 export VISUAL=lvim
 export BROWSER=google-chrome-stable
-
+export PATH="$HOME/.local/bin:$PATH"
 
 neofetch
 eval "$(atuin init zsh --disable-up-arrow)"
