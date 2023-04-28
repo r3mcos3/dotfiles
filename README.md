@@ -13,3 +13,4 @@ these are files from:
 - kitty
 - neofetch
 - ranger
+- nvim " with Lazyvim "
