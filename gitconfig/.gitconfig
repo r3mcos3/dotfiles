@@ -1,0 +1,10 @@
+[user]
+	signingkey = C623E8AD59267AD0
+	email = r3mcos3@gmail.com
+	name = r3mcos3
+[commit]
+	gpgsign = true
+[init]
+	defaultBranch = main
+[safe]
+	directory = /home/remco/homeassistant
