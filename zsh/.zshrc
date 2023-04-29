@@ -30,6 +30,7 @@ export VISUAL=nvim
 export BROWSER=google-chrome-stable
 export PATH="$HOME/.local/bin:$PATH"
 
+eval "$(atuin init zsh --disable-up-arrow)"
+
 neofetch
 
-eval "$(atuin init zsh --disable-up-arrow)"
