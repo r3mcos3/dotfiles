@@ -21,7 +21,7 @@ alias gc="oc"
 alias gs="git status"
 alias gp="git push"
 
-export EDITOR=lvim
+export EDITOR=nvim
 export GPG_TTY=$(tty)
 export TERM=xterm
 export PAGER=most
