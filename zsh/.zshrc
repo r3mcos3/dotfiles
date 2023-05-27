@@ -18,7 +18,18 @@ alias ga="git add $1"
 alias gc="oc"
 alias gs="git status"
 alias gp="git push"
+alias vim="lvim"
+alias nvim="lvim"
 
+export EDITOR=lvim
+export GPG_TTY=$(tty)
+export TERM=xterm
+export PAGER=most
+export TERMINAL=kitty
+export VISUAL=nvim
+export BROWSER=google-chrome-stable
+export PATH="$HOME/.local/bin:$PATH"
+export GPG_TTY=$(tty)
 
 # Load and initialise completion system
 autoload -Uz compinit
