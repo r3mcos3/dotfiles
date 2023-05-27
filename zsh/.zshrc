@@ -22,7 +22,6 @@ alias vim="lvim"
 alias nvim="lvim"
 
 export EDITOR=lvim
-export GPG_TTY=$(tty)
 export TERM=xterm
 export PAGER=most
 export TERMINAL=kitty
