@@ -6,33 +6,32 @@ plug "zap-zsh/zap-prompt"
 plug "zsh-users/zsh-syntax-highlighting"
 plug "zap-zsh/exa"
 
-alias unraid="sshfs -p 2224 root@10.10.50.60:/mnt/user /home/remco/unraid"
-alias ha="sshfs root@10.10.50.149:/config /home/remco/homeassistant"
-alias lg="lazygit"
-alias wgu="wg-quick up wg0"
-alias wgd="wg-quick down wg0"
-alias umnt="umount ~/homeassistant/ & umount ~/unraid/"
-alias cleanup="sudo pacman -Rns $(pacman -Qtdq)"
-alias dot=" cd ~/.dotfiles/"
-alias ga="git add $1"
-alias gc="oc"
-alias gs="git status"
-alias gp="git push"
-alias vim="lvim"
-alias nvim="lvim"
-
-export EDITOR=lvim
-export TERM=xterm
-export PAGER=most
-export TERMINAL=kitty
-export VISUAL=nvim
-export BROWSER=google-chrome-stable
-export PATH="$HOME/.local/bin:$PATH"
-export GPG_TTY=$(tty)
+# aliases
+alias up="sudo apt update"
+alias ug="sudo apt upgrade"
+alias search="sudo apt search $1"
+alias cleanup="sudo apt autoremove"
+alias install="sudo apt install $1"
+alias list="apt list --upgradable"
 
 # Load and initialise completion system
 autoload -Uz compinit
 compinit
 
-eval "$(atuin init zsh --disable-up-arrow)"
+apt() { 
+  command nala "$@"
+}
+sudo() {
+  if [ "$1" = "apt" ]; then
+    shift
+    command sudo nala "$@"
+  else
+    command sudo "$@"
+  fi
+}
 
+# fnm
+export PATH="/home/remco/.local/share/fnm:$PATH"
+eval "`fnm env`"
+
+export GPG_TTY=\$(tty)
