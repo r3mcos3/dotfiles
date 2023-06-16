@@ -15,12 +15,13 @@ alias install="sudo apt install $1"
 alias list="apt list --upgradable"
 alias dot=" cd ~/dotfiles/"
 alias ga="git add $1"
-alias gc="oc"
+alias gc="opencommit"
 alias gs="git status"
 alias gp="git push"
 alias vim="lvim"
 alias nvim="lvim"
 
+export LVIM_DEV_MODE=1
 export EDITOR=lvim
 export TERM=xterm
 export PAGER=most
@@ -31,7 +32,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export GPG_TTY=$(tty)
 # fnm
 export PATH="/home/remco/.local/share/fnm:$PATH"
-eval "`fnm env`"
+eval `fnm env`
 
 
 # Load and initialise completion system
