@@ -1,37 +1,37 @@
 # Created by Zap installer
 [ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
-plug "zsh-users/zsh-autosuggestions"
 plug "zap-zsh/supercharge"
-plug "zap-zsh/zap-prompt"
-plug "zsh-users/zsh-syntax-highlighting"
 plug "zap-zsh/exa"
+plug "zap-zsh/zap-prompt"
+plug "zsh-users/zsh-autosuggestions"
+plug "zsh-users/zsh-syntax-highlighting"
 
 # aliases
-alias up="sudo apt update"
-alias ug="sudo apt upgrade"
-alias search="sudo apt search $1"
 alias cleanup="sudo apt autoremove"
-alias install="sudo apt install $1"
-alias list="apt list --upgradable"
 alias dot=" cd ~/dotfiles/"
 alias ga="git add $1"
 alias gc="opencommit"
-alias gs="git status"
 alias gp="git push"
-alias vim="lvim"
-alias nvim="lvim"
+alias gs="git status"
+alias install="sudo apt install $1"
 alias lg="lazygit"
+alias list="apt list --upgradable"
+alias nvim="lvim"
+alias search="sudo apt search $1"
+alias ug="sudo apt upgrade"
+alias up="sudo apt update"
+alias vim="lvim"
 
-export LVIM_DEV_MODE=1
+export BROWSER=google-chrome-stable
 export EDITOR=lvim
-export TERM=xterm
+export GPG_TTY=$(tty)
+export LVIM_DEV_MODE=1
 export PAGER=most
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="/home/remco/.cargo/bin:$PATH"
+export TERM=xterm
 export TERMINAL=kitty
 export VISUAL=lvim
-export BROWSER=google-chrome-stable
-export PATH="$HOME/.local/bin:$PATH"
-export GPG_TTY=$(tty)
-export PATH="/home/remco/.cargo/bin:$PATH"
 
 
 # Load and initialise completion system
