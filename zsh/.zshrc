@@ -20,6 +20,7 @@ alias gs="git status"
 alias gp="git push"
 alias vim="lvim"
 alias nvim="lvim"
+alias lg="lazygit"
 
 export LVIM_DEV_MODE=1
 export EDITOR=lvim
@@ -30,9 +31,7 @@ export VISUAL=lvim
 export BROWSER=google-chrome-stable
 export PATH="$HOME/.local/bin:$PATH"
 export GPG_TTY=$(tty)
-# fnm
-export PATH="/home/remco/.local/share/fnm:$PATH"
-eval `fnm env`
+export PATH="/home/remco/.cargo/bin:$PATH"
 
 
 # Load and initialise completion system
@@ -51,3 +50,5 @@ sudo() {
   fi
 }
 
+eval "$(atuin init zsh --disable-up-arrow)"
+eval "$(fnm env --use-on-cd)"
