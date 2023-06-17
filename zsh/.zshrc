@@ -51,4 +51,7 @@ sudo() {
 }
 
 eval "$(atuin init zsh --disable-up-arrow)"
-eval "$(fnm env --use-on-cd)"
+
+# fnm
+export PATH="/home/remco/.local/share/fnm:$PATH"
+eval "`fnm env`"
