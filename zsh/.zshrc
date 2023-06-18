@@ -24,6 +24,7 @@ alias umnt="umount /home/remco/homeassistant/ && umount /home/remco/unraid/"
 alias unraid="sshfs -p 2224 root@10.10.50.60:/mnt/user /home/remco/unraid"
 alias up="sudo apt update"
 alias vim="lvim"
+alias mnt="./harddisk/git/scripts/ssh/ssh.sh"
 
 export BROWSER=google-chrome-stable
 export EDITOR=lvim
