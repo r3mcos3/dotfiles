@@ -35,4 +35,4 @@ autoload -Uz compinit
 compinit
 
 eval "$(atuin init zsh --disable-up-arrow)"
-
+eval "$(fnm env --use-on-cd)"
