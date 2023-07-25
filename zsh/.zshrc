@@ -23,6 +23,8 @@ alias search="sudo apt search $1"
 alias ug="sudo apt upgrade"
 alias up="sudo apt update"
 alias vim="lvim"
+alias wgd="nmcli connection down wg0"
+alias wgu="nmcli connection up wg0"
 
 export BROWSER=google-chrome-stable
 export EDITOR=lvim
