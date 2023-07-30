@@ -10,6 +10,7 @@ lvim.plugins = {
 lvim.keys.normal_mode["<Leader>u"] = ":UndotreeToggle<CR>"
 
 vim.opt.relativenumber = true
+vim.cmd("set clipboard=unnamed")
 
 lvim.builtin.which_key.mappings["u"] = {
   "<cmd>:UndotreeToggle<CR>", "Undotree"
