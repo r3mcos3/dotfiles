@@ -25,9 +25,10 @@ alias up="sudo apt update"
 alias vim="lvim"
 alias wgd="nmcli connection down wg0"
 alias wgu="nmcli connection up wg0"
+alias ha="sshfs root@10.10.4.109:// /home/remco/homeassistant"
 
 export BROWSER=google-chrome-stable
-export EDITOR=lvim
+export EDITOR="/home/remco/.local/bin/lvim"
 export GPG_TTY=$(tty)
 export LVIM_DEV_MODE=1
 export PAGER=most
