@@ -30,6 +30,7 @@ alias remove="sudo nala remove $1"
 alias search="nala search $1"
 alias list="nala list --upgradeable"
 alias mntha="sshfs root@10.10.2.51:/ homeassistant"
+alias lg="lazygit"
 
 export EDITOR=nvim
 export TERM=xterm
