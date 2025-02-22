@@ -10,6 +10,11 @@ plug "zap-zsh/exa"
 autoload -Uz compinit
 compinit
 
+# -----------------------------------------------------
+# Set-up FZF key bindings (CTRL R for fuzzy history finder)
+# -----------------------------------------------------
+source <(fzf --zsh)
+
 export EDITOR=nvim
 export TERM=xterm-256color
 export GPG_TTY=$(tty)
