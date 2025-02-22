@@ -1,0 +1,1 @@
+sudo reflector --verbose --sort rate -l 15 -c Netherlands -p https --save /etc/pacman.d/mirrorlist
