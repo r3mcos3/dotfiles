@@ -18,3 +18,5 @@ source <(fzf --zsh)
 export EDITOR=nvim
 export TERM=xterm-256color
 export GPG_TTY=$(tty)
+
+sshfs root@10.10.4.53:/ homeassistant
