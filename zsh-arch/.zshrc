@@ -1,4 +1,3 @@
-
 # -----------------------------------------------------
 # Created by Zap installer
 # -----------------------------------------------------
@@ -24,5 +23,10 @@ source <(fzf --zsh)
 # Exports
 # -----------------------------------------------------
 export EDITOR=nvim
-export TERM=xterm-256color
+export TERM=xterm
+export PAGER=most
+export TERMINAL=cosmic-term
+export VISUAL=nvim
+export BROWSER=thorium-browser
+export PATH="$HOME/.local/bin:$PATH"
 export GPG_TTY=$(tty)
