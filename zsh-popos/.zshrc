@@ -47,3 +47,7 @@ if [ -d "$FNM_PATH" ]; then
   export PATH="/home/remco/.local/share/fnm:$PATH"
   eval "`fnm env`"
 fi
+
+eval "$(zoxide init zsh)"
+
+
