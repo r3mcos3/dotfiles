@@ -30,6 +30,7 @@ alias remove="sudo nala remove $1"
 alias search="nala search $1"
 alias list="nala list --upgradeable"
 alias lg="lazygit"
+alias nvim="bob run nightly $1"
 
 export EDITOR=nvim
 export TERM=xterm
@@ -39,14 +40,13 @@ export VISUAL=nvim
 export BROWSER=thorium-browser
 export PATH="$HOME/.local/bin:$PATH"
 export GPG_TTY=$(tty)
+export PATH="/home/remco/.cargo/bin:$PATH"
+
+eval "$(zoxide init zsh)"
 
 # fnm
 FNM_PATH="/home/remco/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
-  export PATH="/home/remco/.local/share/fnm:$PATH"
+  export PATH="$FNM_PATH:$PATH"
   eval "`fnm env`"
 fi
-
-eval "$(zoxide init zsh)"
-
-
