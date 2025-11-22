@@ -59,6 +59,7 @@ if command -v eza >/dev/null; then
   alias ls='eza --icons'
   alias ll='eza -l --icons --git -a'
   alias lt='eza --tree --level=2 --icons'
+  alias la='eza -l --icons --git -a'
 fi
 
 # Environment Variables
