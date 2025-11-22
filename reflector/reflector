@@ -1,1 +1,30 @@
-sudo reflector --verbose --sort rate -l 15 -c Netherlands -p https --save /etc/pacman.d/mirrorlist
+#!/bin/bash
+
+# Ensure script is run as root
+if [ "$EUID" -ne 0 ]; then
+  echo "Please run as root"
+  exit 1
+fi
+
+# Check if reflector is installed
+if ! command -v reflector &> /dev/null; then
+    echo "reflector could not be found, please install it first."
+    exit 1
+fi
+
+# Backup existing mirrorlist
+if [ -f /etc/pacman.d/mirrorlist ]; then
+    cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
+    echo "Backed up existing mirrorlist to /etc/pacman.d/mirrorlist.bak"
+fi
+
+# Run reflector
+echo "Updating mirrorlist..."
+reflector --verbose --sort rate --age 6 --download-timeout 10 -l 15 -c Netherlands -p https --save /etc/pacman.d/mirrorlist
+
+if [ $? -eq 0 ]; then
+    echo "Mirrorlist updated successfully."
+else
+    echo "Failed to update mirrorlist."
+    exit 1
+fi
