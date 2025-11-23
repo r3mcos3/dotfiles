@@ -6,7 +6,7 @@ plug "zsh-users/zsh-autosuggestions"
 plug "zap-zsh/supercharge"
 plug "zap-zsh/zap-prompt"
 plug "zsh-users/zsh-syntax-highlighting"
-# plug "zap-zsh/exa" # Exa is deprecated and you have eza installed system-wide
+
 
 # Load and initialise completion system
 autoload -Uz compinit
@@ -43,7 +43,6 @@ sudo() {
 }
 
 # Aliases
-# Fixed: Removed $1 from aliases (arguments are appended automatically)
 alias update="sudo nala update"
 alias upgrade="sudo nala upgrade"
 alias fetch="sudo nala fetch"
