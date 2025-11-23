@@ -21,10 +21,12 @@ jobs:
       - name: Lint reflector script
         run: shellcheck reflector/reflector
 
-      - name: Lint Zsh files
+      - name: Test Zsh config files
         run: |
           find . -type f \( -name ".zshrc" -o -name ".zprofile" \) -print0 | while IFS= read -r -d $'\\0' file; do
-            echo "Checking ${file}..."
+            echo "Checking syntax for ${file}..."
             zsh -n "${file}"
+            echo "Running functional tests for ${file}..."
+            .github/scripts/test-zsh-config.sh "${file}"
           done
 
