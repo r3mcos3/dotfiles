@@ -4,8 +4,5 @@
     "config:recommended",
     "github-actions",
     ":disableDependencyDashboard"
-  ],
-  "github-actions": {
-    "enabled": true
-  }
+  ]
 }
