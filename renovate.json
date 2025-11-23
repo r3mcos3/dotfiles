@@ -2,7 +2,8 @@
   "$schema": "https://schema.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended",
-    "github-actions"
+    "github-actions",
+    ":disableDependencyDashboard"
   ],
   "github-actions": {
     "enabled": true
