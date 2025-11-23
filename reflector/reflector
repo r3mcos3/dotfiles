@@ -20,9 +20,7 @@ fi
 
 # Run reflector
 echo "Updating mirrorlist..."
-reflector --verbose --sort rate --age 6 --download-timeout 10 -l 15 -c Netherlands -p https --save /etc/pacman.d/mirrorlist
-
-if [ $? -eq 0 ]; then
+if reflector --verbose --sort rate --age 6 --download-timeout 10 -l 15 -c Netherlands -p https --save /etc/pacman.d/mirrorlist; then
     echo "Mirrorlist updated successfully."
 else
     echo "Failed to update mirrorlist."
