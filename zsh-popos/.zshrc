@@ -29,7 +29,7 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}" # Colored completion
 zstyle ':completion:*' menu select # Interactive selection menu
 
 # Functions
-apt() { 
+apt() {
   command nala "$@"
 }
 
@@ -51,7 +51,8 @@ alias remove="sudo nala remove"
 alias search="nala search"
 alias list="nala list --upgradeable"
 alias lg="lazygit"
-alias nvim="bob run nightly"
+alias clauded="claude --dangerously-skip-permissions"
+alias c="clear"
 
 # Eza Aliases (Modern ls replacement)
 if command -v eza >/dev/null; then
@@ -66,19 +67,18 @@ export EDITOR=nvim
 export VISUAL=nvim
 export PAGER=most
 export TERMINAL=cosmic-term
-export BROWSER=thorium-browser
+export BROWSER=google-chrome-stable
 export GPG_TTY=$(tty)
 
-# Fix TERM if needed, but usually auto-detected. 
-# export TERM=xterm-256color 
+# Fix TERM if needed, but usually auto-detected.
+# export TERM=xterm-256color
 
 # Path Configuration
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.npm/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
 
-# Zoxide (Smart cd)
-# Replaces cd with z
-eval "$(zoxide init zsh --cmd cd)"
 
 # fnm
 FNM_PATH="/home/remco/.local/share/fnm"
@@ -86,3 +86,7 @@ if [ -d "$FNM_PATH" ]; then
   export PATH="$FNM_PATH:$PATH"
   eval "`fnm env`"
 fi
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/remco/.local/bin:$PATH"
